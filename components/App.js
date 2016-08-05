@@ -9,7 +9,6 @@ const App = () => (
 		<AddTodo />
 		<VisibleTodoList />
     	<VisibleCounter />
-		<Footer />
 	</div>
 )
 
