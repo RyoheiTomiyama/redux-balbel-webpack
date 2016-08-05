@@ -18,3 +18,17 @@ export const toggleTodo = (id) => {
 		id
 	}
 }
+
+
+
+export const upCount = () => {
+  return {
+    type: 'UP_COUNT'
+  }
+}
+
+export const downCount = () => {
+  return {
+    type: 'DOWN_COUNT'
+  }
+}
