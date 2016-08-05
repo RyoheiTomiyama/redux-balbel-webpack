@@ -1,9 +1,14 @@
-const visibilityCounter = (state, action) => {
+const visibilityCounter = (state = 0, action) => {
+	console.log(state)
 	switch(action.type) {
 		case 'UP_COUNT':
-			return action.count++
+			return state+1
 		case 'DOWN_COUNT':
-			return action.count--
+			if(state > 0){
+				return state-1
+			} else {
+				state
+			}
 		default:
 			return state
 	}

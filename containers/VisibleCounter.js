@@ -1,23 +1,18 @@
 import { connect } from 'react-redux'
-import { toggleTodo } from '../actions'
+import { upCount, downCount } from '../actions'
 import Counter from '../components/Counter'
 
 const mapStateToProps = (state) => {
   return {
-    count: state.count
+    count: state.visibilityCounter
   }
 }
 
-const mapDispatchUpToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onUp: () => {
       dispatch(upCount())
-    }
-  }
-}
-
-const mapDispatchDownToProps = (dispatch) => {
-  return {
+    },
     onDown: () => {
       dispatch(downCount())
     }
@@ -26,8 +21,7 @@ const mapDispatchDownToProps = (dispatch) => {
 
 const VisibleCounter = connect(
   mapStateToProps,
-  mapDispatchUpToProps,
-  mapDispatchDownToProps
+  mapDispatchToProps
 )(Counter)
 
 export default VisibleCounter
