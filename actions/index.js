@@ -32,3 +32,10 @@ export const downCount = () => {
     type: 'DOWN_COUNT'
   }
 }
+
+// Drawer出し入れ
+export const toggleDrawer = () => {
+  return {
+    type: 'TOGGLE_DRAWER'
+  }
+}

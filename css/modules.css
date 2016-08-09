@@ -1,0 +1,6 @@
+.className {
+	background-color: #ccc;
+	.hoge {
+		background-color: #000;
+	}
+}
