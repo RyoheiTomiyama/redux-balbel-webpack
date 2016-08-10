@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import {responsiveStateReducer} from 'redux-responsive'
 import todos from './todos'
 import visibilityFilter from './visibilityFilter'
 import visibilityCounter from './visibilityCounter'
@@ -9,7 +10,8 @@ const todoApp = combineReducers({
 	visibilityFilter,
 	visibilityCounter,
 	header,
-	routing: routerReducer
+	routing: routerReducer,
+	browser: responsiveStateReducer,
 })
 
 export default todoApp

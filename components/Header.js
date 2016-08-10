@@ -17,10 +17,10 @@ const Header = ({state,onClick}) => {
 			onLeftIconButtonTouchTap = {() => onClick()}
 			style = { styles.appBar }
 		/>
-		{/* <Drawer
-				isOpen = {state.isOpen}
-				onTouchTap = {() => onClick()}
-			/> */}
+		<Drawer
+			isOpen = {state.isOpen}
+			onTouchTap = {() => onClick()}
+		/>
 	</header>
 )};
 

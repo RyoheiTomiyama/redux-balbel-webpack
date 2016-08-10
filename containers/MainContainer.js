@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import { toggleDrawer } from '../actions'
-import Sidebar from '../components/Sidebar'
+import Main from '../components/Main'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    state: state.header
+    browser: state.browser,
+    isOpen: state.header.isOpen
   }
 }
 
@@ -16,9 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const SidebarContainer = connect(
+const MainContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar)
+)(Main)
 
-export default SidebarContainer
+export default MainContainer

@@ -1,10 +1,18 @@
-import React from 'react'
-import SidebarContainer from '../containers/SidebarContainer'
+import React, {PropTypes} from 'react'
 // import Sidebar from './Sidebar'
-const Main = () => (
-	<div>
-		<SidebarContainer />
-	</div>
-)
+
+import styles from '../css/modules.css';
+
+const Main = ({isOpen}) => {
+	return (
+		<div className={styles.open}>
+		ほげ
+		</div>
+	)
+}
+
+Main.PropTypes = {
+  isOpen: PropTypes.bool.isRequired,
+}
 
 export default Main
