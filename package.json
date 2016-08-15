@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline",
+    "start": "webpack-dev-server --inline --history-api-fallback --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.13.1",
     "material-ui": "^0.15.3",
     "normalize.css": "^4.2.0",
     "react": "^15.3.0",
@@ -19,7 +20,8 @@
     "react-router-redux": "^4.0.5",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
-    "redux-responsive": "^3.1.0"
+    "redux-responsive": "^3.1.0",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

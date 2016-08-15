@@ -1,17 +1,16 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
+import Header from '../containers/HeaderContainer'
 import Footer from './Footer'
+import Main from '../containers/MainContainer'
 
 const Layout = ({children}) => (
 	<div>
-		<header>
-			header
-			<Link to="/">Top</Link>
-			{' '}
-			<Link to="/home">Home</Link>
-		</header>
-		<div>{children}</div>
-		<Footer />
+		<Header />
+		<Main>
+			{children}
+			<Footer />
+		</Main>
 	</div>
 )
 

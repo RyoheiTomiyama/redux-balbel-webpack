@@ -1,11 +1,9 @@
 import { connect } from 'react-redux'
-import { getPosts } from '../actions'
-import Main from '../components/Main'
+import { toggleDrawer } from '../actions'
+import Home from '../components/Home'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    browser: state.browser,
-    isOpen: state.header.isOpen,
     posts: state.posts
   }
 }
@@ -13,14 +11,14 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch(getPosts());
+      dispatch(toggleDrawer());
     }
   }
 }
 
-const MainContainer = connect(
+const HeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main)
+)(Home)
 
-export default MainContainer
+export default HeaderContainer

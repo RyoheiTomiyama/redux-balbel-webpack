@@ -1,0 +1,32 @@
+addr: :8000
+origins: # sources
+  - name: back
+    endpoints: # destinations
+      - key: local
+        url: http://127.0.0.1:3100
+      - key: develop
+        url: http://127.0.0.1:3101
+      - key: prerelease
+        url: http://127.0.0.1:3102
+      - key: production
+        url: https://fledge.jp
+    endpointKey: local # default endpoint key for "back"
+  - name: front
+    endpoints: # destinations
+      - key: local
+        url: http://127.0.0.1:3000
+      - key: develop
+        url: http://127.0.0.1:3001
+      - key: production
+        url: http://example.com
+    endpointKey: local # default endpoint key for "front"
+api:
+  pathPrefix: /_proxy
+behaviors:
+- pathPrefix: /api
+  originKey: back
+# - pathPrefix: /api.v2
+#   originKey: back
+- pathPrefix: /
+  originKey: front
+startPath: /

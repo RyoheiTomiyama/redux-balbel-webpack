@@ -3,19 +3,20 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import {responsiveStoreEnhancer} from 'redux-responsive'
 import reducers from './reducers'
+import thunk from 'redux-thunk'
+
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {cyan100, cyan500, cyan700} from 'material-ui/styles/colors';
-import RaisedButton from 'material-ui/RaisedButton'
+
 import Header from './containers/HeaderContainer'
-import Main from './containers/MainContainer'
 import Layout from './components/Layout'
 import App from './components/App'
-import Home from './components/Home'
+import Home from './containers/HomeContainer'
 
 import { openDrawer, closeDrawer } from './actions'
 
@@ -29,7 +30,11 @@ const muiTheme = getMuiTheme({
 	},
 })
 
-let store = createStore(reducers, responsiveStoreEnhancer)
+let store = createStore(reducers, compose(
+	responsiveStoreEnhancer,
+	applyMiddleware(thunk),
+	window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument()
+))
 // スマホならドロワーを隠す
 var getDevice = (function(){
     var ua = navigator.userAgent;
@@ -52,20 +57,20 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 import styles from './css/modules.css';
 
+const routes = (
+	<Route path="/" component={Layout}>
+		<IndexRoute component={App} />
+		<Route path="app" component={App} />
+		<Route path="home" component={Home} />
+	</Route>
+);
+
 render(
 	<Provider store={store}>
 		<MuiThemeProvider muiTheme={muiTheme} >
-			<div className={styles.className} >
-				<Header />
-				<Main />
 				<Router history={history}>
-					<Route path="/" component={Layout}>
-						<IndexRoute component={App} />
-						<Route path="home" component={Home} />
-					</Route>
+					{routes}
 				</Router>
-				<RaisedButton label="default" className={styles.hoge} />
-			</div>
 		</MuiThemeProvider>
 	</Provider>,
 	document.getElementById('root')
